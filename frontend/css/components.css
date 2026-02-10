@@ -275,6 +275,7 @@ body.focus-mode .leaderboard-panel {
     user-select: none;
     overflow-wrap: normal;
     word-break: normal;
+    white-space: pre-wrap;
     position: relative;
     min-height: 180px;
 }
@@ -300,10 +301,10 @@ body.focus-mode .leaderboard-panel {
     position: relative;
 }
 
-.char.current::after {
+.char.current::before {
     content: '';
     position: absolute;
-    right: -2px;
+    left: -2px;
     top: 0.15em;
     bottom: 0.15em;
     width: 2px;
