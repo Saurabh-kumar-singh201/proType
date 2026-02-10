@@ -28,7 +28,7 @@ export class UI {
     renderText(text) {
         this.typingText.innerHTML = text.split('').map((char, index) => {
             const className = index === 0 ? 'char current' : 'char';
-            const displayChar = char === ' ' ? '&nbsp;' : char;
+            const displayChar = char === ' ' ? ' ' : char;
             return `<span class="${className}">${displayChar}</span>`;
         }).join('');
         this.typingContainer.scrollTop = 0;
