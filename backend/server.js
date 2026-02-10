@@ -1,19 +1,21 @@
 // Simple multiplayer server (Express + Socket.IO)
-const path = require('path');
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST']
+    }
+});
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(__dirname));
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+app.get('/health', (req, res) => {
+    res.json({ ok: true });
 });
 
 const rooms = new Map();

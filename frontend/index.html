@@ -129,7 +129,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        window.PROTYPE_SERVER_URL = window.PROTYPE_SERVER_URL || 'http://localhost:3000';
+    </script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" crossorigin="anonymous"></script>
     <script type="module" src="js/app.js"></script>
 </body>
 </html>

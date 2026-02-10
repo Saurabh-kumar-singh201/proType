@@ -1,0 +1,10 @@
+{
+  "name": "protype-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ProType frontend",
+  "scripts": {
+    "dev": "npx serve . -l 3001",
+    "start": "npx serve . -l 3001"
+  }
+}

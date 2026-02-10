@@ -74,7 +74,8 @@ export class Multiplayer {
             this.setStatus('Server not running');
             return;
         }
-        this.socket = io();
+        const serverUrl = window.PROTYPE_SERVER_URL || window.location.origin;
+        this.socket = io(serverUrl);
 
         this.socket.on('roomCreated', ({ code, hostId }) => {
             this.handleRoomJoined(code, hostId);

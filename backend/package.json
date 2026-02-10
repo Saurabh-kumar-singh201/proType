@@ -1,8 +1,8 @@
 {
   "name": "protype",
   "version": "1.0.0",
-  "description": "A professional typing speed test application with Monokai Pro theme",
-  "main": "index.html",
+  "description": "ProType multiplayer backend (Socket.IO + Express)",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
