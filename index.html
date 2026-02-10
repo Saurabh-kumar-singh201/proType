@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ProType - Professional typing speed test with Monokai Pro theme">
+    <meta name="keywords" content="typing test, speed test, WPM, typing practice">
+    <meta name="author" content="ProType">
+    <title>ProType - Professional Typing Test</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">ProType</h1>
+            <p class="tagline">Master Your Typing Speed</p>
+        </header>
+
+        <div class="settings-panel">
+            <div class="settings-bar">
+                <div class="bar-group">
+                    <button class="btn bar-btn active" id="solo-btn">solo</button>
+                    <button class="btn bar-btn" id="multi-btn">multiplayer</button>
+                </div>
+                <div class="bar-divider" aria-hidden="true"></div>
+                <div class="bar-group">
+                    <button class="btn option-btn bar-btn" id="punctuation-btn" data-option="punctuation">
+                        <span class="option-icon">.,!?</span> punctuation
+                    </button>
+                    <button class="btn option-btn bar-btn" id="numbers-btn" data-option="numbers">
+                        <span class="option-icon">123</span> numbers
+                    </button>
+                </div>
+                <div class="bar-divider" aria-hidden="true"></div>
+                <div class="bar-group">
+                    <button class="btn mode-btn bar-btn active" data-mode="time">time</button>
+                    <button class="btn mode-btn bar-btn" data-mode="words">words</button>
+                    <button class="btn mode-btn bar-btn" data-mode="quote">quote</button>
+                </div>
+                <div class="bar-divider" aria-hidden="true"></div>
+                <div class="bar-group time-settings">
+                    <button class="btn time-btn bar-btn active" data-time="15">15</button>
+                    <button class="btn time-btn bar-btn" data-time="30">30</button>
+                    <button class="btn time-btn bar-btn" data-time="60">60</button>
+                    <button class="btn time-btn bar-btn" data-time="120">120</button>
+                </div>
+                <div class="bar-group word-settings" style="display: none;">
+                    <button class="btn word-btn bar-btn active" data-words="10">10</button>
+                    <button class="btn word-btn bar-btn" data-words="25">25</button>
+                    <button class="btn word-btn bar-btn" data-words="50">50</button>
+                    <button class="btn word-btn bar-btn" data-words="100">100</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="multiplayer-panel" id="multiplayer-panel" aria-live="polite">
+            <div class="mp-row">
+                <input class="mp-input" id="player-name" type="text" placeholder="name" maxlength="16">
+                <input class="mp-input" id="room-code" type="text" placeholder="code" maxlength="6">
+                <button class="btn-primary mp-btn" id="create-room-btn">Create</button>
+                <button class="btn-secondary mp-btn" id="join-room-btn">Join</button>
+                <button class="btn-secondary mp-btn" id="leave-room-btn">Leave</button>
+                <button class="btn-primary mp-btn" id="start-room-btn" disabled>Start</button>
+            </div>
+            <div class="mp-row mp-meta">
+                <span class="mp-label">Room:</span>
+                <span class="mp-code" id="room-display">—</span>
+                <span class="mp-status" id="mp-status">Solo mode</span>
+            </div>
+        </div>
+
+        <div class="timer-panel" aria-live="polite">
+            <span class="timer-label">Time</span>
+            <span class="timer-value" id="time-display">15</span>
+            <span class="timer-unit">s</span>
+        </div>
+
+        <div class="typing-container" id="typing-container" tabindex="0">
+            <div class="typing-text" id="typing-text"></div>
+        </div>
+
+        <div class="restart-message" id="restart-message">
+            Press <span class="restart-key">Tab</span> or <span class="restart-key">Esc</span> to restart
+        </div>
+
+        <div class="results-panel" id="results-panel" aria-live="polite">
+            <h2 class="results-title">Test Complete!</h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-label">WPM</div>
+                    <div class="result-value" id="final-wpm">0</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Accuracy</div>
+                    <div class="result-value" id="final-accuracy">0%</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Characters</div>
+                    <div class="result-value" id="final-chars">0</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Errors</div>
+                    <div class="result-value" id="final-errors">0</div>
+                </div>
+            </div>
+            <div class="results-actions">
+                <button class="btn-primary" id="try-again-btn">Try Again</button>
+            </div>
+        </div>
+
+        <div class="leaderboard-panel" id="leaderboard-panel">
+            <h3 class="leaderboard-title">Leaderboard</h3>
+            <ul class="leaderboard-list" id="leaderboard-list"></ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>Built with ❤️ for typing enthusiasts | Press <strong>Tab</strong> or <strong>Esc</strong> to restart anytime</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

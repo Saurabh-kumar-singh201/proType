@@ -1,0 +1,56 @@
+/* CSS Variables - Monokai Pro Dark Theme */
+:root {
+    /* Background Colors (Monkeytype-inspired) */
+    --bg-primary: #323437;
+    --bg-secondary: #2c2e31;
+    --bg-tertiary: #3a3c40;
+    
+    /* Text Colors */
+    --text-primary: #d1d0c5;
+    --text-secondary: #8b8b8b;
+    --text-dim: #646669;
+    
+    /* Accent Colors (serika dark-like) */
+    --accent-primary: #e2b714;
+    --accent-secondary: #c9a227;
+    --accent-success: #8db06a;
+    --accent-error: #ca4754;
+    --accent-warning: #c9a227;
+    
+    /* UI Colors */
+    --border-color: #3f4145;
+    --hover-bg: #3a3c40;
+    --selection-bg: #8b8b8b80;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(226, 183, 20, 0.2);
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* Typography */
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-display: 'Syne', sans-serif;
+    
+    /* Z-index layers */
+    --z-base: 1;
+    --z-modal: 1000;
+}
