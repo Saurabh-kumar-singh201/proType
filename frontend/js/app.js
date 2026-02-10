@@ -109,6 +109,12 @@ class ProTypeApp {
     }
 
     handleKeyDown(e) {
+        const activeEl = document.activeElement;
+        const isTypingInField = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable);
+        if (isTypingInField) {
+            return;
+        }
+
         // Restart shortcuts
         if (e.key === 'Tab' || e.key === 'Escape') {
             e.preventDefault();
@@ -170,6 +176,10 @@ class ProTypeApp {
         // Start timer for time mode
         if (this.state.mode === CONFIG.modes.TIME) {
             this.state.timerInterval = setInterval(() => {
+                if (this.state.isComplete) {
+                    this.state.clearIntervals();
+                    return;
+                }
                 const remaining = this.state.getRemainingTime();
                 this.ui.updateStats(
                     this.state.calculateWPM(),
@@ -187,11 +197,16 @@ class ProTypeApp {
 
         // Update WPM continuously
         this.state.wpmInterval = setInterval(() => {
+            if (this.state.isComplete) {
+                this.state.clearIntervals();
+                return;
+            }
             this.updateLiveStats();
         }, 100);
     }
 
     updateLiveStats() {
+        if (this.state.isComplete) return;
         const wpm = this.state.calculateWPM();
         const accuracy = this.state.calculateAccuracy();
         const time = this.state.mode === CONFIG.modes.TIME 

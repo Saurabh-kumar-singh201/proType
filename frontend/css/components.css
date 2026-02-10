@@ -273,7 +273,8 @@ body.focus-mode .leaderboard-panel {
     line-height: 2.7rem;
     color: var(--text-dim);
     user-select: none;
-    word-wrap: break-word;
+    overflow-wrap: normal;
+    word-break: normal;
     position: relative;
     min-height: 180px;
 }
@@ -294,15 +295,15 @@ body.focus-mode .leaderboard-panel {
 }
 
 .char.current {
-    color: var(--text-primary);
+    color: var(--text-dim);
     border-radius: 0;
     position: relative;
 }
 
-.char.current::before {
+.char.current::after {
     content: '';
     position: absolute;
-    left: -2px;
+    right: -2px;
     top: 0.15em;
     bottom: 0.15em;
     width: 2px;

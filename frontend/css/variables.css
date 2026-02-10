@@ -10,12 +10,12 @@
     --text-secondary: #8b8b8b;
     --text-dim: #646669;
     
-    /* Accent Colors (serika dark-like) */
-    --accent-primary: #e2b714;
-    --accent-secondary: #c9a227;
-    --accent-success: #8db06a;
+    /* Accent Colors (emerald theme) */
+    --accent-primary: #10b981;
+    --accent-secondary: #059669;
+    --accent-success: #16a34a;
     --accent-error: #ca4754;
-    --accent-warning: #c9a227;
+    --accent-warning: #65a30d;
     
     /* UI Colors */
     --border-color: #3f4145;
@@ -26,7 +26,7 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 20px rgba(226, 183, 20, 0.2);
+    --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.2);
     
     /* Transitions */
     --transition-fast: 0.15s ease;
